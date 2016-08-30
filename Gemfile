@@ -39,6 +39,9 @@ group :development, :test do
   gem 'annotate'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
