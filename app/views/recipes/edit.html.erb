@@ -1,0 +1,22 @@
+
+
+<!-- <h2>Edit an existing recipe</h2>
+<form action="/recipe/<%= @recipe.id %>" method="POST">
+  <p><label >Name:</label>
+    <input type="text" name="recipe[name]" value="<%= @recipe.name %>">
+  </p>
+  <p><label >Image</label><input type="url" name="recipe[image]" value="<%= @recipe.image %>"></p>
+  <!-<p><label >Ingredients</label><input type="text" name="recipe[ingredients]" value="<%#= @recipe.ingredients %>"></p> -->
+  <!-- <p><label >Instructions</label><input type="text" name="recipe[instructions]" value="<%#= @recipe.instructions %>"></p>
+
+<input type="submit" value="Create recipe">
+</form> --> -->
+
+
+<h1>Editing recipe</h1>
+
+<%= render 'form', recipe: @recipe %>
+
+<%= link_to 'Show', @recipe %>
+<%= link_to 'Back', user_path(@recipe.user) %>
+<!-- <%#= link_to 'Back', recipes_path %> -->

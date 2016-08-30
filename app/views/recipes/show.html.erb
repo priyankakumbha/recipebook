@@ -1,0 +1,38 @@
+<!-- <h2>This should show one recipe</h2>
+<P>Name:<%= @recipe.name %></p>
+<p>Image:<%= image_tag( @recipe.image ) %> </p>
+
+  <p>Instructions<%= @recipe.instructions %> </p>
+
+<a href="/recipe/<%= @recipe.id %>/edit">
+  Edit this recipe
+</a>
+
+<%= button_to( "Destroy #{@recipe.name}", "/recipe/#{@recipe.id}/delete", :method => :delete ) %>
+ -->
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @recipe.name %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @recipe.image %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @recipe.category %>
+</p>
+
+<p>
+  <strong>Instructions:</strong>
+  <%= @recipe.instructions %>
+</p>
+
+
+<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<%= link_to 'Back', user_path(@recipe.user) %>

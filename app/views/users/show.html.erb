@@ -1,0 +1,36 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.name %></h1>
+
+<ul>
+  <li><%= @user.email_id %></li>
+
+  <li><%= @user.admin %></li>
+</ul>
+
+
+
+
+
+<h3>User Recipes</h3>
+<p id="notice"><%= notice %></p>
+
+<% @user.recipes.each do |r| %>
+  <p><%= r.name %></p>
+
+  <ul>
+      <li>
+        <!-- <%#= r.name %> was created by <%#= r.user.name %>, it was on <%#= r.categories.first.name %> -->
+        <img src="<%= r.image %>" width="42" height="42">
+      <%= link_to "view recipe", recipe_path( r.id ), :method => :get %>
+        <ul>
+          <% r.comments.each do |m| %>
+            <li><%= m.name %></li>
+          <% end %>
+        </ul>
+
+      </li>
+
+  </ul>
+<% end %>
+<%= link_to 'New Recipe', new_recipe_path %>
