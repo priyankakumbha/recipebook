@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   # get 'users/destroy'
   #
   # root "users#index"
+  root 'users#index'#index'
   get "/users/edit" => 'users#edit', :as => "edit_user"
   resources :users, :except => [:edit]
 
