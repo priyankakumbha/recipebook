@@ -16,4 +16,4 @@
 
 <%= render 'form', recipe: @recipe %>
 <!-- @current_user = User.find_by_id(session[:user_id]) -->
-<%= link_to 'Back', user_path(User.find_by_id(session[:user_id])) %>
+<%= link_to 'Back',user_path(@current_user) %>

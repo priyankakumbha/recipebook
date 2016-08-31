@@ -1,29 +1,107 @@
+require 'google/api_client'
+require 'trollop'
+
 class RecipesController < ApplicationController
+
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
-  # GET /movies
-  # GET /movies.json
+  DEVELOPER_KEY =  'AIzaSyDwouYJaSWiuSaJk7u4wjyaBDQGogC_ItU'
+  YOUTUBE_API_SERVICE_NAME = 'youtube'
+  YOUTUBE_API_VERSION = 'v3'
+
+  def get_youtube_service
+    client = Google::APIClient.new(
+      :key => DEVELOPER_KEY,
+      :authorization => nil,
+      :application_name => $PROGRAM_NAME,
+      :application_version => '1.0.0'
+    )
+    youtube = client.discovered_api(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION)
+
+    return client, youtube
+  end
+
+  def get_youtube_videos(receipe_name)
+    opts = Trollop::options do
+      opt :q, 'Search term', :type => String, :default => receipe_name
+      opt :max_results, 'Max results', :type => :int, :default => 3
+    end
+
+    client, youtube = get_youtube_service
+
+    begin
+      # Call the search.list method to retrieve results matching the specified
+      # query term.
+      search_response = client.execute!(
+        :api_method => youtube.search.list,
+        :parameters => {
+          :part => 'snippet',
+          :q => opts[:q],
+          :maxResults => opts[:max_results]
+        }
+      )
+
+      all_videos = []
+      channels = []
+      playlists = []
+
+      # Add each result to the appropriate list, and then display the lists of
+      # matching videos, channels, and playlists.
+      search_response.data.items.each do |search_result|
+        case search_result.id.kind
+          when 'youtube#video'
+            # videos << "#{search_result.snippet.title} (#{search_result.id.videoId})"
+            thumbnail_url= "#{search_result.snippet.thumbnails.high.url} "
+            video_id =  "#{search_result.id.videoId}"
+            videoURL ="https://www.youtube.com/watch?v=#{video_id}"
+            # puts videoURL
+            hrefTagStart="<a href='#{videoURL}'>"
+            hrefTagEnd="</a>"
+            paraValue= "<img src= '#{thumbnail_url}'style='width:250px;height:250px; margin-right:10px;'>";
+            # /* display output in result area */
+            youtubeurl=  "#{hrefTagStart}#{paraValue}#{hrefTagEnd}"
+
+            all_videos << youtubeurl.html_safe
+        end
+      end
+
+      # puts "Videos:\n", videos, "\n"
+      # puts "Channels:\n", channels, "\n"
+      # puts "Playlists:\n", playlists, "\n"
+    rescue Google::APIClient::TransmissionError => e
+      puts e.result.body
+    end
+    return all_videos
+  end
+
+
   def index
     @recipes = Recipe.all
   end
+#   def self.search params
+#   recipes = recipe.where(category_id: params[:category].to_i) unless params[:category].blank?
+#   recipes
+# end
+  def search
+    @recipes = Category.find( params[:category] ).recipes.where(:user_id => @current_user.id)
+end
 
-  # GET /movies/1
-  # GET /movies/1.json
   def show
     @recipe = Recipe.find( params[:id] )
+    @all_video_link = get_youtube_videos(@recipe.name)
+
   end
 
-  # GET /movies/new
+
   def new
     @recipe = Recipe.new
   end
 
-  # GET /movies/1/edit
+
   def edit
   end
 
-  # POST /movies
-  # POST /movies.json
+
   def create
     user = @current_user
     recipe = Recipe.new(recipe_params)
@@ -42,8 +120,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /movies/1
-  # PATCH/PUT /movies/1.json
+
   def update
 
 # @recipe = Recipe.find(params[:id])
@@ -58,8 +135,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  # DELETE /movies/1
-  # DELETE /movies/1.json
+
   def destroy
     @recipe.destroy
     respond_to do |format|
@@ -76,6 +152,6 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:name, :image, :instructions)
+      params.require(:recipe).permit(:name, :image, :instructions, :category_ids, { :ingredient_ids => [] })
     end
 end

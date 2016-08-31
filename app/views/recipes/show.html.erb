@@ -20,19 +20,62 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @recipe.image %>
+  <img src="<%= @recipe.image %>"width="42" height="42" margin-right:"10px">
+
 </p>
 
 <p>
   <strong>Category:</strong>
-  <%= @recipe.category %>
+  <% @recipe.categories.each do |category|  %>
+    <%= category.name %>
+  <% end %>
 </p>
 
+
+<p>
+  <strong>Ingredient:</strong>
+  <% @recipe.ingredients.each do |ingredient|  %>
+    <%= ingredient.name %>
+  <% end %>
+</p>
 <p>
   <strong>Instructions:</strong>
   <%= @recipe.instructions %>
 </p>
 
 
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<%= link_to 'Edit', edit_recipe_path(@recipe) %>
 <%= link_to 'Back', user_path(@recipe.user) %>
+<%= link_to 'Destroy', @recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+
+<p>
+  <strong>Youtube videos:</strong>
+  <% @all_video_link .each do |link|  %>
+   <!-- <a href='https://www.youtube.com/watch?v=uQ9jgBb8S4o'><img src= 'https://i.ytimg.com/vi/uQ9jgBb8S4o/hqdefault.jpg 'style='width:250px;height:250px; margin-right:10px;'></a> -->
+    <%= link %>
+  <% end %>
+</p>
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//recipebook-1.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>

@@ -16,12 +16,12 @@ p u1
 Recipe.destroy_all
 r1 = Recipe.create :name => "Omlete", :instructions => "Add your eggs and move the pan around to spread them out evenly.
  Continue as for the basic omelette. Quarter or roughly chop the mushrooms and add to a hot frying pan with a small knob of butter,
- # a drizzle of olive oil and a pinch of salt and pepper. Fry and toss around until golden, then turn the heat down to medium." ,:category => "Lunch", :image => "https://i.ytimg.com/vi/V0ZdqdXjmWw/maxresdefault.jpg"
+ # a drizzle of olive oil and a pinch of salt and pepper. Fry and toss around until golden, then turn the heat down to medium.", :image => "https://i.ytimg.com/vi/V0ZdqdXjmWw/maxresdefault.jpg"
 
  r2 = Recipe.create :name => "Pancake", :instructions => "Whisk milk, eggs and vanilla together in a jug. Sift flour into a large bowl. Stir in sugar. Make a well in the centre.
  Add milk mixture. Whisk until just combined.Heat a large non-stick frying pan over medium heat. Spray with cooking oil. Using 1/4 cup mixture per pancake,
  cook 2 pancakes for 2 minutes or until bubbles appear on surface. Turn and cook for a further 1-2 minutes or until cooked through. Transfer to a plate. Cover loosely with foil to keep warm.
-  Repeat with remaining mixture, spraying pan with cooking oil between batches.", :category => "Breakfast", :image => "http://cdn-aws-01.mummypages.ie/images/1223/61/3/7_5/american-pancakes.jpg"
+  Repeat with remaining mixture, spraying pan with cooking oil between batches.", :image => "http://cdn-aws-01.mummypages.ie/images/1223/61/3/7_5/american-pancakes.jpg"
 
   u1.recipes << r1
   u2.recipes << r2
@@ -70,6 +70,11 @@ Ingredient.destroy_all
 i1 = Ingredient.create :name => "Apple"
 i2 = Ingredient.create :name => "egg"
 i3 = Ingredient.create :name => "Wheat flour"
+i3 = Ingredient.create :name => "Blueberry"
+i3 = Ingredient.create :name => "Mango"
+i3 = Ingredient.create :name => "salt"
+i3 = Ingredient.create :name => "Olive oil"
+i3 = Ingredient.create :name => "Red onion"
 
 p "Ingredient count: #{Ingredient.all.count}"
 

@@ -35,7 +35,10 @@ Rails.application.routes.draw do
   post '/login' => 'session#create'
   delete '/logout' => 'session#destroy', :as => "logout"
 
+  get 'recipes/search' => 'recipes#search'
+  
   resources :recipes
+
 #
 #   get '/recipe' => 'recipes#index'
 #   get '/recipe/new' => 'recipes#new'

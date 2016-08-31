@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+
+
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -23,10 +25,18 @@
 
   <div class="field">
     <%= f.label :category %>
-    <%= f.text_field :category%>
-  </div>
 
+    <%= f.collection_select(:category_ids, Category.all, :id, :name) %>
 
+</div>
+<%#= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name") %>
+
+<div class="field">
+  <%= f.label :ingredients %>
+
+  <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
+
+</div>
   <div class="field">
     <%= f.label :instructions %>
     <%= f.text_field :instructions %>

@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Recipebook</title>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -15,7 +16,7 @@
     <% end %>
 
     <nav>
-      
+
 
       <% unless @current_user.present? %>
         <%= link_to( "Login", login_path() ) %>
@@ -25,9 +26,9 @@
         <%= link_to( "Log out #{@current_user.email_id}", logout_path(), :method => :delete ) %>
       <% end %>
     </nav>
-
-
 <%= yield %>
+<script id="dsq-count-scr" src="//recipebook-1.disqus.com/count.js" async></script>
+
 
 </body>
 </html>

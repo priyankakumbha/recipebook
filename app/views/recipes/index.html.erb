@@ -18,8 +18,20 @@
     <% @recipes.each do |recipe| %>
       <tr>
         <td><%= recipe.name %></td>
-        <td><img src="<%= recipe.image %>" width="42" height="42"></td>
-          <td><%= recipe.category %></td>
+        <td><img src="<%= recipe.image %>"width="42" height="42" margin-right:"10px"></td>
+          <td>
+            <!-- <%#= recipe.category %> -->
+          <% @recipe.categories.each do |category|  %>
+            <%= category.name %>
+          <% end %>
+          </td>
+
+          <td>
+            <!-- <%#= recipe.category %> -->
+          <% @recipe.ingredients.each do |ingredient|  %>
+            <%= ingredient.name %>
+          <% end %>
+          </td>
         <td><%= recipe.instructions %></td>
         <td><%= link_to 'Show', recipe %></td>
         <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>

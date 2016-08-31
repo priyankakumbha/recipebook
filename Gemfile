@@ -25,7 +25,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
+# require 'rubygems'
+# gem 'google-api-client', '~> 0.7'
+gem 'google-api-client', '0.8.2', require: 'google/api_client'
+gem 'trollop'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -38,6 +41,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'annotate'
 end
+
+
 
 group :production do
   gem 'rails_12factor'
