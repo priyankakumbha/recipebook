@@ -122,8 +122,7 @@ end
 
 
   def update
-
-# @recipe = Recipe.find(params[:id])
+    # @recipe = Recipe.find(params[:id])
     respond_to do |format|
       if @recipe.update(recipe_params)
         format.html { redirect_to @recipe, notice: 'recipe was successfully updated.' }
