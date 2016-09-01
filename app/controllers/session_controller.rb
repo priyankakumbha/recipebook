@@ -6,7 +6,7 @@ class SessionController < ApplicationController
     user = User.find_by( :email_id => params[:email_id] )
 
     if user.present? && user.authenticate( params[:password] )
-      flash[:success] = "User successfully logged in"
+      # flash[:success] = "User successfully logged in"
       session[:user_id] = user.id
       # if user.admin
       # redirect_to users_path

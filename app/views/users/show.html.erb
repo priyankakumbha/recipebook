@@ -11,39 +11,31 @@
 
 
 
-
+<div class="search_tag">
 <%= form_tag recipes_search_path, method: :get do |f| %>
-  <!-- <%#= text_field_tag :search, params[:search], placeholder: "Search Recipes" %> -->
-  <%= select_tag 'category', options_for_select(Category.all.map{|el| [el.name, el.id]}) %>
+
+  <%= select_tag 'category',options_for_select(Category.all.map{|el| [el.name, el.id]}) %>
+  <!-- options_for_select(Category.all.map{|el| [el.name, el.id]}) -->
   <%= submit_tag 'Search' %>
   <% @user.recipes.each do |recipe| %>
     <!-- <%#= recipe.name %> -->
 
   <% end %>
 <% end %>
-
+</div>
 <h3>User Recipes</h3>
 <p id="notice"><%= notice %></p>
 <div class="recipe-details">
 <% @user.recipes.each do |r| %>
-  <p><%= r.name %></p>
-
-   <!-- <ul>
-      <li> -->
-        <!-- <%#= r.name %> was created by <%#= r.user.name %>, it was on <%#= r.categories.first.name %> -->
-        <img src="<%= r.image %>" width="70" height="70" margin-right:"10" ><br>
-      <%= link_to "view recipe", recipe_path( r.id ), :method => :get %>
-        <!-- <ul>
-          <! <% r.comments.each do |m| %> -->
-            <!-- <li><%#= m.name %></li> -->
-          <%end %>
-        <!-- </ul> -->
-
-      <!-- </li>
-
-  </ul> -->
+  <div class="recipe">
+    <p><%= r.name %></p>
+    <img class="each_image" src="<%= r.image %>" style='width:50px;height:50px; margin-right:10px;'><br>
+    <%= link_to "view recipe", recipe_path( r.id ), :method => :get %>
+  </div>
 <% end %>
-<br>
+
+
+
 
 <%= link_to 'New Recipe', new_recipe_path %>
 </div>
