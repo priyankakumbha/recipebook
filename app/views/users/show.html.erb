@@ -1,41 +1,29 @@
-<!-- <h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p> -->
-<!-- <h1><%#= @user.name %></h1> -->
+<div class="search_123">
 
-<!-- <ul>
-  <li><%#= @user.email_id %></li>
-
-  <li><%#= @user.admin %></li>
-</ul> -->
-
-
-
-
-<div class="search_tag">
 <%= form_tag recipes_search_path, method: :get do |f| %>
+<%= submit_tag 'Search',:class => "search waves-effect waves-light btn" %>
+<%= select_tag 'category',options_for_select(Category.all.map{|el| [el.name, el.id]}), :class => "category"  %>
 
-  <%= select_tag 'category',options_for_select(Category.all.map{|el| [el.name, el.id]}) %>
-  <!-- options_for_select(Category.all.map{|el| [el.name, el.id]}) -->
-  <%= submit_tag 'Search' %>
+
+
   <% @user.recipes.each do |recipe| %>
-    <!-- <%#= recipe.name %> -->
-
   <% end %>
 <% end %>
 </div>
-<h3>User Recipes</h3>
+
+<div class="search_tag">
+
+</div>
+<!-- <h3>User Recipes</h3> -->
 <p id="notice"><%= notice %></p>
 <div class="recipe-details">
 <% @user.recipes.each do |r| %>
-  <div class="recipe">
-    <p><%= r.name %></p>
-    <img class="each_image" src="<%= r.image %>" style='width:50px;height:50px; margin-right:10px;'><br>
-    <%= link_to "view recipe", recipe_path( r.id ), :method => :get %>
+<div class="recipe">
+  <p><%= r.name %></p>
+  <img class="each_image" src="<%= r.image %>" style='width:300px;height:300px;margin-left:10px;margin-right:10px;'><br>
+  <%= link_to "view recipe", recipe_path( r.id ), :method => :get ,:class => "waves-effect waves-light btn"%>
   </div>
 <% end %>
-
-
-
-
-<%= link_to 'New Recipe', new_recipe_path %>
 </div>
+<br>
+<!-- <%#= link_to 'Add Recipe', new_recipe_path,:class => "waves-effect waves-light btn" %> -->

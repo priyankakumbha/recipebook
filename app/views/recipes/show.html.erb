@@ -1,15 +1,3 @@
-<!-- <h2>This should show one recipe</h2>
-<P>Name:<%= @recipe.name %></p>
-<p>Image:<%= image_tag( @recipe.image ) %> </p>
-
-  <p>Instructions<%= @recipe.instructions %> </p>
-
-<a href="/recipe/<%= @recipe.id %>/edit">
-  Edit this recipe
-</a>
-
-<%= button_to( "Destroy #{@recipe.name}", "/recipe/#{@recipe.id}/delete", :method => :delete ) %>
- -->
 
 <p id="notice"><%= notice %></p>
 
@@ -20,7 +8,7 @@
 
 <p>
   <strong>Image:</strong>
-  <img src="<%= @recipe.image %>"width="42" height="42" margin-right:"10px">
+  <img src="<%= @recipe.image %>"width="250" height="250" margin-right:"10px">
 
 </p>
 
@@ -44,31 +32,21 @@
 </p>
 
 
-<%= link_to 'Edit', edit_recipe_path(@recipe) %>
-<%= link_to 'Back', user_path(@recipe.user) %>
-<%= link_to 'Destroy', @recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Edit', edit_recipe_path(@recipe),:class => "waves-effect waves-light btn" %>
+<%= link_to 'Back', user_path(@recipe.user),:class => "waves-effect waves-light btn" %>
+<%= link_to 'Destroy', @recipe, method: :delete, data: { confirm: 'Are you sure?' } ,:class => "waves-effect waves-light btn"%>
 
 
 <p>
   <strong>Youtube videos:</strong>
-  <% @all_video_link .each do |link|  %>
-   <!-- <a href='https://www.youtube.com/watch?v=uQ9jgBb8S4o'><img src= 'https://i.ytimg.com/vi/uQ9jgBb8S4o/hqdefault.jpg 'style='width:250px;height:250px; margin-right:10px;'></a> -->
-    <%= link %>
+  <% @all_video_link .each do |singleVideoLink|  %>
+   <%= singleVideoLink %>
   <% end %>
 </p>
 
 <div id="disqus_thread"></div>
 <script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-     */
-    /*
-    var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
+
     (function() {  // DON'T EDIT BELOW THIS LINE
         var d = document, s = d.createElement('script');
 

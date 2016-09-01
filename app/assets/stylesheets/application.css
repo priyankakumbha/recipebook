@@ -20,9 +20,10 @@
     width: 50px;
 }
 nav {
-    /*background-color: black;*/
+    background-color: #3B3738;
     font-size: 20px;
     color: #ff9933;
     margin-bottom: 20px;
     text-align: right;
+    margin-right: 15px;
 }

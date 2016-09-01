@@ -2,8 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body{
+  // background-image: image-url("background4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #C63D0F;
+  word-wrap: break-word;
   // text-align: center;
-  background-color: #ffaa33;
+  // background-color: #ffaa33;
 }
 
 
@@ -21,10 +26,24 @@ form{
 //   margin:20px 70px ;
 // }
 .initial_page{
+  // text-align: center;
+  margin-top: 30px;
+  margin-left: 300px;
+  height: 300px;
+  width:600px;
+  background-color: white;
+  border-radius: 30px;
+  // border: 3px solid red;
+}
+.colors{
+  color:black;
+  margin-left: 30px;
+}
+h1{
+  margin:0 auto;
+  background-color: #7E8F7C;
+  width:120px;
+  height:30px;
   text-align: center;
-  margin-top: 150px;
-  margin-left: 500px;
-  height: 250px;
-  width:300px;
-  border: 3px solid red;
+  color:white;
 }

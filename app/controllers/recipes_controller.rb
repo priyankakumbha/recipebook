@@ -43,8 +43,6 @@ class RecipesController < ApplicationController
       )
 
       all_videos = []
-      channels = []
-      playlists = []
 
       # Add each result to the appropriate list, and then display the lists of
       # matching videos, channels, and playlists.
@@ -54,6 +52,7 @@ class RecipesController < ApplicationController
             # videos << "#{search_result.snippet.title} (#{search_result.id.videoId})"
             thumbnail_url= "#{search_result.snippet.thumbnails.high.url} "
             video_id =  "#{search_result.id.videoId}"
+            puts video_id
             videoURL ="https://www.youtube.com/watch?v=#{video_id}"
             # puts videoURL
             hrefTagStart="<a href='#{videoURL}'>"
@@ -89,7 +88,7 @@ end
 
   def show
     @recipe = Recipe.find( params[:id] )
-    @all_video_link = get_youtube_videos(@recipe.name) if @recipe.name
+    @all_video_link = get_youtube_videos("recipe of #{@recipe.name}") if @recipe.name
 
   end
 
@@ -140,7 +139,7 @@ end
   def destroy
     @recipe.destroy
     respond_to do |format|
-      format.html { redirect_to recipes_path, notice: 'Recipe was successfully destroyed.' }
+      format.html { redirect_to user_path(@current_user), notice: 'Recipe was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
