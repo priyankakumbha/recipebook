@@ -1,5 +1,5 @@
 require 'google/api_client'
-require 'trollop'
+# require 'trollop'
 
 class RecipesController < ApplicationController
 
@@ -22,11 +22,11 @@ class RecipesController < ApplicationController
   end
 
   def get_youtube_videos(recipe_name)
-    opts = Trollop::options do
-      opt :q, 'Search term', :type => String, :default => recipe_name
-      opt :p, 'Search term', :type => String, :default => recipe_name
-      opt :max_results, 'Max results', :type => :int, :default => 3
-    end
+    # opts = Trollop::options do
+    #   opt :q, 'Search term', :type => String, :default => recipe_name
+    #   opt :p, 'Search term', :type => String, :default => recipe_name
+    #   opt :max_results, 'Max results', :type => :int, :default => 3
+    # end
 
     client, youtube = get_youtube_service
 
@@ -37,9 +37,8 @@ class RecipesController < ApplicationController
         :api_method => youtube.search.list,
         :parameters => {
           :part => 'snippet',
-          :q => opts[:q],
-          :p => opts[:q],
-          :maxResults => opts[:max_results]
+          :q => recipe_name,
+          :maxResults => 3
         }
       )
 
