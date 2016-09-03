@@ -22,11 +22,7 @@ class RecipesController < ApplicationController
   end
 
   def get_youtube_videos(recipe_name)
-    # opts = Trollop::options do
-    #   opt :q, 'Search term', :type => String, :default => recipe_name
-    #   opt :p, 'Search term', :type => String, :default => recipe_name
-    #   opt :max_results, 'Max results', :type => :int, :default => 3
-    # end
+
 
     client, youtube = get_youtube_service
 
@@ -38,7 +34,10 @@ class RecipesController < ApplicationController
         :parameters => {
           :part => 'snippet',
           :q => recipe_name,
-          :maxResults => 3
+          :maxResults => 3,
+          :channelId=>'UCpSgg_ECBj25s9moCDfSTsA'
+          #:channelId=>'UC-eez0IJKrZSFzPBXuQ8arg'
+
         }
       )
 

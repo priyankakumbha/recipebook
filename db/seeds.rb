@@ -74,7 +74,11 @@ i3 = Ingredient.create :name => "Blueberry"
 i3 = Ingredient.create :name => "Mango"
 i3 = Ingredient.create :name => "salt"
 i3 = Ingredient.create :name => "Olive oil"
-i3 = Ingredient.create :name => "Red onion"
+i3 = Ingredient.create :name => "strawberry"
+i3 = Ingredient.create :name => "plain flour"
+i3 = Ingredient.create :name => "sugar"
+i3 = Ingredient.create :name => "cream"
+i3 = Ingredient.create :name => "Black paper"
 
 p "Ingredient count: #{Ingredient.all.count}"
 
