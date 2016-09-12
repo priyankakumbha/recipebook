@@ -3,9 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body{
   // background-image: image-url("background4.jpg");
+
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #C63D0F;
+  // background-color: #9966CC;
   word-wrap: break-word;
   // text-align: center;
   // background-color: #ffaa33;
@@ -27,6 +28,7 @@ form{
 // }
 .initial_page{
   // text-align: center;
+
   margin-top: 30px;
   margin-left: 300px;
   height: 300px;
@@ -46,4 +48,9 @@ h1{
   height:30px;
   text-align: center;
   color:white;
+}
+.session-new {
+  background-image: image-url("background2.jpg");
+
+
 }
