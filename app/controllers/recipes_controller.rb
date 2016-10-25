@@ -1,14 +1,9 @@
 require 'google/api_client'
-# require 'trollop'
-
 class RecipesController < ApplicationController
-
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
-
-  DEVELOPER_KEY =  'AIzaSyDwouYJaSWiuSaJk7u4wjyaBDQGogC_ItU'
-  YOUTUBE_API_SERVICE_NAME = 'youtube'
-  YOUTUBE_API_VERSION = 'v3'
-
+before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+DEVELOPER_KEY =  'AIzaSyDwouYJaSWiuSaJk7u4wjyaBDQGogC_ItU'
+YOUTUBE_API_SERVICE_NAME = 'youtube'
+YOUTUBE_API_VERSION = 'v3'
   def get_youtube_service
     client = Google::APIClient.new(
       :key => DEVELOPER_KEY,
@@ -17,18 +12,13 @@ class RecipesController < ApplicationController
       :application_version => '1.0.0'
     )
     youtube = client.discovered_api(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION)
-
     return client, youtube
   end
 
   def get_youtube_videos(recipe_name)
+  client, youtube = get_youtube_service
+  begin
 
-
-    client, youtube = get_youtube_service
-
-    begin
-      # Call the search.list method to retrieve results matching the specified
-      # query term.
       search_response = client.execute!(
         :api_method => youtube.search.list,
         :parameters => {
@@ -36,15 +26,11 @@ class RecipesController < ApplicationController
           :q => recipe_name,
           :maxResults => 3,
           :channelId=>'UCpSgg_ECBj25s9moCDfSTsA'
-          #:channelId=>'UC-eez0IJKrZSFzPBXuQ8arg'
 
         }
       )
 
       all_videos = []
-
-      # Add each result to the appropriate list, and then display the lists of
-      # matching videos, channels, and playlists.
       search_response.data.items.each do |search_result|
         case search_result.id.kind
           when 'youtube#video'
@@ -57,16 +43,12 @@ class RecipesController < ApplicationController
             hrefTagStart="<a href='#{videoURL}'>"
             hrefTagEnd="</a>"
             paraValue= "<img src= '#{thumbnail_url}'style='width:250px;height:250px; margin-right:10px;'>";
-            # /* display output in result area */
+              # display output in result area
             youtubeurl=  "#{hrefTagStart}#{paraValue}#{hrefTagEnd}"
-
             all_videos << youtubeurl.html_safe
         end
       end
 
-      # puts "Videos:\n", videos, "\n"
-      # puts "Channels:\n", channels, "\n"
-      # puts "Playlists:\n", playlists, "\n"
     rescue Google::APIClient::TransmissionError => e
       puts e.result.body
     end
@@ -77,13 +59,10 @@ class RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
   end
-#   def self.search params
-#   recipes = recipe.where(category_id: params[:category].to_i) unless params[:category].blank?
-#   recipes
-# end
+
   def search
     @recipes = Category.find( params[:category] ).recipes.where(:user_id => @current_user.id)
-end
+  end
 
   def show
     @recipe = Recipe.find( params[:id] )
@@ -108,10 +87,7 @@ end
 
     respond_to do |format|
       if recipe.save
-
-        # format.html { redirect_to @recipe.user, notice: 'recipe was successfully created.' }
         format.html { redirect_to user_path(User.find_by_id(session[:user_id])), notice: 'recipe was successfully created.' }
-        #format.json { render :show, status: :created, location: @recipe.user }
       else
         format.html { render :new }
         format.json { render json: recipe.errors, status: :unprocessable_entity }
@@ -148,7 +124,7 @@ end
       @recipe = Recipe.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+  
     def recipe_params
       params.require(:recipe).permit(:name, :image, :instructions, :category_ids, { :ingredient_ids => [] })
     end

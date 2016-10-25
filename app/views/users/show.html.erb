@@ -3,18 +3,12 @@
 <%= form_tag recipes_search_path, method: :get do |f| %>
 <%= submit_tag 'Search',:class => "search waves-effect waves-light btn" %>
 <%= select_tag 'category',options_for_select(Category.all.map{|el| [el.name, el.id]}), :class => "category"  %>
-
-
-
   <% @user.recipes.each do |recipe| %>
   <% end %>
 <% end %>
 </div>
+<div class="search_tag"></div>
 
-<div class="search_tag">
-
-</div>
-<!-- <h3>User Recipes</h3> -->
 <p id="notice"><%= notice %></p>
 <div class="recipe-details">
 <% @user.recipes.each do |r| %>
@@ -26,4 +20,3 @@
 <% end %>
 </div>
 <br>
-<!-- <%#= link_to 'Add Recipe', new_recipe_path,:class => "waves-effect waves-light btn" %> -->

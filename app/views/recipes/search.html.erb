@@ -2,7 +2,6 @@
 <p><%= recipe.name %></p>
 <ul>
     <li>
-        <!-- <%#= r.name %> was created by <%#= r.user.name %>, it was on <%#= r.categories.first.name %> -->
     <img src="<%= recipe.image %>" style='width:300px;height:300px;margin-left:10px;margin-right:10px;',class="each_image">
      <%= link_to "view recipe", recipe_path( recipe.id ), :method => :get %>
         <ul>

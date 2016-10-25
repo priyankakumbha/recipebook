@@ -14,18 +14,22 @@ p "User count: #{User.all.count}"
 p u1
 
 Recipe.destroy_all
-r1 = Recipe.create :name => "Omlete", :instructions => "Add your eggs and move the pan around to spread them out evenly.
- Continue as for the basic omelette. Quarter or roughly chop the mushrooms and add to a hot frying pan with a small knob of butter,
- # a drizzle of olive oil and a pinch of salt and pepper. Fry and toss around until golden, then turn the heat down to medium.", :image => "https://i.ytimg.com/vi/V0ZdqdXjmWw/maxresdefault.jpg"
+r1 = Recipe.create :name => "Mini hot dogs", :instructions => "Warm bread rolls. Meanwhile, place frankfurts in a microwave-safe bowl and cover with cold water. Cook on high/800watts/100% for 3 minutes or until heated through.
+Make a lengthways cut in the top of each roll (don't cut all the way through). Place the frankfurts in the rolls. Drizzle over tomato sauce. Sprinkle with grated cheddar to serve.",
+:image => "http://asset1.marksandspencer.com/is/image/mands/HT_FD_F04C_00952644_NC_X_EC_0?$PDP_MAXI_ZOOM_NEW$"
 
- r2 = Recipe.create :name => "Pancake", :instructions => "Whisk milk, eggs and vanilla together in a jug. Sift flour into a large bowl. Stir in sugar. Make a well in the centre.
+r2 = Recipe.create :name => "Spaghetti with garlic butter", :instructions => "Add your eggs and move the pan around to spread them out evenly.
+Continue as for the basic omelette. Quarter or roughly chop the mushrooms and add to a hot frying pan with a small knob of butter,
+# a drizzle of olive oil and a pinch of salt and pepper. Fry and toss around until golden, then turn the heat down to medium.", :image => "http://cdn.iowagirleats.com/wp-content/uploads/2015/04/Pasta-with-Garlic-Butter-Caper-Sauce-iowagirleats-01.jpg"
+
+r3 = Recipe.create :name => "Pancake", :instructions => "Whisk milk, eggs and vanilla together in a jug. Sift flour into a large bowl. Stir in sugar. Make a well in the centre.
  Add milk mixture. Whisk until just combined.Heat a large non-stick frying pan over medium heat. Spray with cooking oil. Using 1/4 cup mixture per pancake,
  cook 2 pancakes for 2 minutes or until bubbles appear on surface. Turn and cook for a further 1-2 minutes or until cooked through. Transfer to a plate. Cover loosely with foil to keep warm.
   Repeat with remaining mixture, spraying pan with cooking oil between batches.", :image => "http://cdn-aws-01.mummypages.ie/images/1223/61/3/7_5/american-pancakes.jpg"
 
   u1.recipes << r1
-  u2.recipes << r2
-  u3.recipes << r2
+  u1.recipes << r2
+  u1.recipes << r3
 
 Comment.destroy_all
 m1 = Comment.create :name => "Awsome recipe"
@@ -90,12 +94,6 @@ puts "INGREDIENT HAS_AND_BELONGS_TO_MANY RECIPES"
 p "Ingredient one recipe count: #{i1.recipes.count}"
 p "Ingredient two recipe count: #{i2.recipes.count}"
 p "Ingredient three recipe count: #{i3.recipes.count}"
-
-# puts "SONG HAS_AND_BELONGS_TO_MANY MIXTAPES"
-# p "Song one mixtape count: #{s1.mixtapes.count}"
-# p "Song two mixtape count: #{s2.mixtapes.count}"
-# p "Song three mixtape count: #{s3.mixtapes.count}"
-
 puts "INGREDIENT ONE RECIPE NAMES"
 i1.recipes.each do |recipe|
   puts "\t#{recipe.name}"
@@ -112,13 +110,11 @@ p "Category two user count: #{c2.users.count}"
 p "Category three user count: #{c3.users.count}"
 
 puts "ALL ARTIST NAMES FOR GENRE ONE"
-# Print out all artist names for genre one
 c1.users.each do |u|
   puts "\t#{u.name}"
 end
 
 puts "ALL CATEGORY NAMES FOR USER ONE"
-# Print out all artist names for genre one
 u1.categories.each do |c|
   puts "\t#{c.name}"
 end

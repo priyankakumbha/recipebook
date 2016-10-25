@@ -2,23 +2,18 @@
 <html>
 <head>
   <title>Recipebook</title>
-
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body class="<%=controller_name%>-<%=action_name%>">
-
   <% if flash[:success] %>
       <h1><%= flash[:success] %></h1>
     <% end %>
     <% if flash[:error] %>
       <h1><%= flash[:error] %></h1>
     <% end %>
-
     <nav>
-
-
       <% unless @current_user.present? %>
         <%= link_to( "Login", login_path(),:class => "waves-effect waves-light btn" ) %>
         <%= link_to( "Sign up", new_user_path(),:class => "waves-effect waves-light btn" ) %>
@@ -30,7 +25,5 @@
     </nav>
 <%= yield %>
 <script id="dsq-count-scr" src="//recipebook-1.disqus.com/count.js" async></script>
-
-
 </body>
 </html>

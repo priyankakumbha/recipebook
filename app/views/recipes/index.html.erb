@@ -17,14 +17,12 @@
         <td><%= recipe.name %></td>
         <td><img src="<%= recipe.image %>"width="200" height="200" margin-right:"10px"></td>
           <td>
-            <!-- <%#= recipe.category %> -->
           <% recipe.categories.each do |category| %>
             <%= category.name %>
           <% end %>
           </td>
 
           <td>
-            <!-- <%#= recipe.category %> -->
           <% recipe.ingredients.each do |ingredient|  %>
             <%= ingredient.name %>
           <% end %>
