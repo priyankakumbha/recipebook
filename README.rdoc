@@ -1,30 +1,22 @@
-== README
+Recipebook
+Click here to see live project https://priyankause.herokuapp.com
+Clone or Fork from here https://github.com/priyankakumbha/recipebook
+Username: priyanks@ga.co
+Password: Chicken
+
+Description
+Recipe book is a personal recipe diary, where you can store all your favourite recipes.
+Once recipe is created, related YouTube video is automatically displayed along with recipe.
+User will be able to delete and update the recipes as required.
+
+Technology Stack
+Ruby on Rails and PostgreSQL for back-end build and database
+Materialize.CSS for css
+jQuery library
+Youtube APIs
+DISQUS plugin for comments
+Ruby, JavaScript, HTML5 and CSS3 as programming languages
+Heroku for cloud deployment
+
 References
 https://developers.google.com/youtube/v3/code_samples/ruby#search_by_keyword
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
