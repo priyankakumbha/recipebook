@@ -124,7 +124,7 @@ YOUTUBE_API_VERSION = 'v3'
       @recipe = Recipe.find(params[:id])
     end
 
-  
+
     def recipe_params
       params.require(:recipe).permit(:name, :image, :instructions, :category_ids, { :ingredient_ids => [] })
     end

@@ -17,40 +17,23 @@ img{
 margin-left: 30px;
 
 }
-form{
-  // border: 3px solid red;
-  // margin: 130px 500px;
 
-
-}
-// p{
-//   margin:20px 70px ;
-// }
 .initial_page{
-  // text-align: center;
-
-  margin-top: 30px;
-  margin-left: 300px;
-  height: 300px;
-  width:600px;
+  margin-left:auto;
+  margin-right: auto;
+  margin-top: auto;
+  height: 30%;
+  width:50%;
   background-color: white;
-  border-radius: 30px;
-  // border: 3px solid red;
+  border-radius: 0.3%;
+border: 3px solid gray;
+
 }
 .colors{
   color:black;
   margin-left: 30px;
 }
 h1{
-  margin:0 auto;
-  background-color: #7E8F7C;
-  width:120px;
-  height:30px;
+  font-size: 22px;
   text-align: center;
-  color:white;
-}
-.session-new {
-  background-image: image-url("background2.jpg");
-
-
 }

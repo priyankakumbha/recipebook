@@ -35,10 +35,10 @@
     <%= f.text_area :instructions, :class=>"materialize-textarea" %>
   </div>
 
-  <div class="actions">
+  <div class="actions right-align">
     <%= f.submit :class => "waves-effect waves-light btn" %>
   </div>
-  <%= link_to 'Back',user_path(@current_user),:class => "waves-effect waves-light btn" %>
+<div class="left-align"><%= link_to 'Back',user_path(@current_user),:class => "waves-effect waves-light btn" %></div>
 
 <% end %>
 </div>

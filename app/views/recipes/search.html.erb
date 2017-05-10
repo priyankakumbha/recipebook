@@ -1,16 +1,23 @@
+<div class="row ">
+
 <% @recipes.each do |recipe| %>
+<div class=" col s4 ">
 <p><%= recipe.name %></p>
 <ul>
     <li>
-    <img src="<%= recipe.image %>" style='width:300px;height:300px;margin-left:10px;margin-right:10px;',class="each_image">
-     <%= link_to "view recipe", recipe_path( recipe.id ), :method => :get %>
-        <ul>
-          <% recipe.comments.each do |m| %>
-            <li><%= m.name %></li>
-          <% end %>
-        </ul>
-      </li>
-    </ul>
+    <img src="<%= recipe.image %>" style='width:200px;height:200px;margin-left:10px;margin-right:10px;',class="each_image">
+
+</li>
+</ul>
+        <!-- <ul> -->
+          <!-- <%# recipe.comments.each do |m| %> -->
+            <!-- <li><%#= m.name %></li> -->
+          <%# end %>
+        <!-- </ul> -->
+
+        <%= link_to "view recipe", recipe_path( recipe.id ), :method => :get,:class => "waves-effect waves-light btn" %>
+        <%= link_to 'Back', user_path(@current_user),:class => "waves-effect waves-light btn" %>
+    </div>
 
 <% end %>
-<%= link_to 'Back', user_path(@current_user),:class => "waves-effect waves-light btn" %>
+</div>
